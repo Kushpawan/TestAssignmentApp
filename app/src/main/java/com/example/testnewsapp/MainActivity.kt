@@ -24,11 +24,7 @@ class MainActivity : AppCompatActivity() {
         newsViewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
         newsViewModel.init()
 
-        newsViewModel.getNewsRepository()?.observe(this, androidx.lifecycle.Observer {
-            val newsArticles = it?.articles!!
-            articleArrayList.addAll(newsArticles)
-            newsAdapter!!.notifyDataSetChanged()
-        })
+        observeViewModel()
 
         setupRecyclerView()
     }
@@ -45,7 +41,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun observeViewModel(){
-
+    private fun observeViewModel() {
+        newsViewModel.getNewsRepository()?.observe(this, androidx.lifecycle.Observer {
+            it?.let {
+                val newsArticles = it?.articles!!
+                articleArrayList.addAll(newsArticles)
+                newsAdapter!!.notifyDataSetChanged()
+            }
+        })
     }
 }

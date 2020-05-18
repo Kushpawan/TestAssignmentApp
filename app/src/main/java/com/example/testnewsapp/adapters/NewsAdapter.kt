@@ -27,8 +27,8 @@ class NewsAdapter(
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
 
-        holder.tvName.text = articles[position].title.toString()
-        holder.tvDescription.text = articles[position].toString()
+        holder.tvName.text = articles[position].title
+      //  holder.tvDescription.text = articles[position].source.toString()
         Picasso.get().load(articles[position].urlToImage).into(holder.ivNews)
     }
 
@@ -38,7 +38,7 @@ class NewsAdapter(
 
     inner class NewsViewHolder(itemView: View) : ViewHolder(itemView) {
         var tvName: TextView = itemView.findViewById(R.id.tvName)
-        var tvDescription: TextView = itemView.findViewById(R.id.tvDesCription)
+        var tvDescription: TextView = itemView.findViewById(R.id.tvDescription)
         var ivNews: ImageView = itemView.findViewById(R.id.ivNews)
 
     }

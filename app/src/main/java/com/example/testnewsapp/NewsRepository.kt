@@ -11,8 +11,8 @@ class NewsRepository {
     private val newsApi: NewsApi = RetrofitService.createService(NewsApi::class.java)
     val newsData = MutableLiveData<NewsResponse?>()
 
-    fun getNews(source: String?, key: String?): MutableLiveData<NewsResponse?> {
-        newsApi.getNewsList(source, key)!!.enqueue(object : Callback<NewsResponse?> {
+    fun getNews(country: String?, key: String?): MutableLiveData<NewsResponse?> {
+        newsApi.getNewsList(country, key)!!.enqueue(object : Callback<NewsResponse?> {
             override fun onResponse(
                 call: Call<NewsResponse?>,
                 response: Response<NewsResponse?>
@@ -33,7 +33,7 @@ class NewsRepository {
     }
 
     companion object {
-        lateinit var newsRepository: NewsRepository
+        private lateinit var newsRepository: NewsRepository
 
         @JvmStatic
         val instance: NewsRepository?
