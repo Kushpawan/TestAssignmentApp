@@ -29,7 +29,7 @@ class SearchActivity : AppCompatActivity() {
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        toolbar?.title = "Address Search"
+        supportActionBar?.title="Address Search"
 
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
         searchViewModel.init()
@@ -77,7 +77,6 @@ class SearchActivity : AppCompatActivity() {
             searchRecyclerAdapter!!.notifyDataSetChanged()
         }
     }
-
 
     private fun observeViewModel(query: String) {
         searchViewModel.getSearchRepository(query)

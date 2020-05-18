@@ -4,11 +4,11 @@
     android:id="@+id/searchLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="8dp"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="horizontal"
-    android:padding="5dp"
+    android:background="@drawable/edit_text_border"
     android:visibility="visible">
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -17,15 +17,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:background="@color/white"
+        android:background="@null"
         android:focusable="true"
         android:hint="@string/search_here"
         android:imeOptions="actionDone"
         android:inputType="text"
         android:maxLines="1"
-        android:padding="8dp"
+        android:padding="12dp"
         android:textColor="@android:color/black"
-        android:textSize="17sp" />
+        android:textSize="18sp" />
 
     <ProgressBar
         android:id="@+id/searchProgress"
@@ -43,6 +43,7 @@
         android:clickable="true"
         android:focusable="true"
         android:padding="6dp"
+        android:visibility="gone"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
 </LinearLayout>

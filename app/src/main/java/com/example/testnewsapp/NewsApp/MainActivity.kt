@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        toolbar?.title = "Address Search"
+        supportActionBar?.title = "News App"
 
         newsViewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
         newsViewModel.init()
