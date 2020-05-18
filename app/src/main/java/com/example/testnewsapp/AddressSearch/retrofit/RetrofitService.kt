@@ -1,11 +1,12 @@
-package com.example.testnewsapp
+package com.example.testnewsapp.AddressSearch.retrofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitService {
+
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://newsapi.org/v2/")
+        .baseUrl("http://digi-api.airtel.in/compassLocation/rest/address/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

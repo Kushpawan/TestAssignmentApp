@@ -1,4 +1,4 @@
-package com.example.testnewsapp.adapters
+package com.example.testnewsapp.NewsApp.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.testnewsapp.NewsApp.adapters.NewsAdapter.NewsViewHolder
+import com.example.testnewsapp.NewsApp.model.NewsArticle
 import com.example.testnewsapp.R
-import com.example.testnewsapp.adapters.NewsAdapter.NewsViewHolder
-import com.example.testnewsapp.model.NewsArticle
 import com.squareup.picasso.Picasso
 import java.util.*
 
@@ -28,7 +28,7 @@ class NewsAdapter(
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
 
         holder.tvName.text = articles[position].title
-      //  holder.tvDescription.text = articles[position].source.toString()
+        //  holder.tvDescription.text = articles[position].source.toString()
         Picasso.get().load(articles[position].urlToImage).into(holder.ivNews)
     }
 

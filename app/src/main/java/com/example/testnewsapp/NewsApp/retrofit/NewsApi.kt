@@ -1,6 +1,6 @@
-package com.example.testnewsapp
+package com.example.testnewsapp.NewsApp.retrofit
 
-import com.example.testnewsapp.model.NewsResponse
+import com.example.testnewsapp.NewsApp.model.NewsResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

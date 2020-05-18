@@ -1,11 +1,11 @@
-package com.example.testnewsapp.viewmodels
+package com.example.testnewsapp.NewsApp.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.testnewsapp.NewsRepository
-import com.example.testnewsapp.NewsRepository.Companion.instance
-import com.example.testnewsapp.model.NewsResponse
+import com.example.testnewsapp.NewsApp.model.NewsResponse
+import com.example.testnewsapp.NewsApp.retrofit.NewsRepository
+import com.example.testnewsapp.NewsApp.retrofit.NewsRepository.Companion.instance
 
 class NewsViewModel : ViewModel() {
 

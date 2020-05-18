@@ -1,14 +1,17 @@
-package com.example.testnewsapp
+package com.example.testnewsapp.NewsApp.retrofit
 
 import androidx.lifecycle.MutableLiveData
-import com.example.testnewsapp.model.NewsResponse
+import com.example.testnewsapp.NewsApp.model.NewsResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class NewsRepository {
 
-    private val newsApi: NewsApi = RetrofitService.createService(NewsApi::class.java)
+    private val newsApi: NewsApi =
+        RetrofitService.createService(
+            NewsApi::class.java
+        )
     val newsData = MutableLiveData<NewsResponse?>()
 
     fun getNews(country: String?, key: String?): MutableLiveData<NewsResponse?> {
@@ -38,7 +41,8 @@ class NewsRepository {
         @JvmStatic
         val instance: NewsRepository?
             get() {
-                newsRepository = NewsRepository()
+                newsRepository =
+                    NewsRepository()
                 return newsRepository
             }
     }
