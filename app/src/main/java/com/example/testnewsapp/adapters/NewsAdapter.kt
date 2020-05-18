@@ -18,6 +18,7 @@ class NewsAdapter(
     var context: Context,
     var articles: ArrayList<NewsArticle>
 ) : RecyclerView.Adapter<NewsViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view =
             LayoutInflater.from(context).inflate(R.layout.news_item, parent, false)
@@ -25,8 +26,9 @@ class NewsAdapter(
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
+
         holder.tvName.text = articles[position].title.toString()
-        holder.tvDesCription.text = articles[position].toString()
+        holder.tvDescription.text = articles[position].toString()
         Picasso.get().load(articles[position].urlToImage).into(holder.ivNews)
     }
 
@@ -36,7 +38,7 @@ class NewsAdapter(
 
     inner class NewsViewHolder(itemView: View) : ViewHolder(itemView) {
         var tvName: TextView = itemView.findViewById(R.id.tvName)
-        var tvDesCription: TextView = itemView.findViewById(R.id.tvDesCription)
+        var tvDescription: TextView = itemView.findViewById(R.id.tvDesCription)
         var ivNews: ImageView = itemView.findViewById(R.id.ivNews)
 
     }
