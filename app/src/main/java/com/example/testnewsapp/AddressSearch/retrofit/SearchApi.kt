@@ -10,5 +10,5 @@ interface SearchApi {
     fun getSearchAddress(
         @Query("queryString") query: String?,
         @Query("city") city: String?
-    ): Call<SearchResponse?>?
+    ): Call<SearchResponse?>
 }

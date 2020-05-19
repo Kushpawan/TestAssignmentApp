@@ -25,6 +25,8 @@ class SearchActivity : AppCompatActivity() {
     private var searchRecyclerAdapter: SearchRecyclerAdapter? = null
     lateinit var searchViewModel: SearchViewModel
     private var addressList = ArrayList<AddressDetail>()
+
+    // some city for city selection spinner
     var cities = arrayOf("Bangalore", "Gurgaon", "Delhi", "Lucknow", "Mumbai", "Pune")
     var selectedCity: String = "Bangalore"
 
@@ -37,12 +39,14 @@ class SearchActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Address Search"
 
+        //initialise viewModel
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
         searchViewModel.init()
 
         setupRecyclerView()
         setupSpinner()
 
+        // edit text change listner for entering text in search field
         search_EditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 charSequence: CharSequence,
@@ -74,6 +78,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
+        // recycler view to show search result
         if (searchRecyclerAdapter == null) {
             searchRecyclerAdapter = SearchRecyclerAdapter(this, addressList)
             search_recycler.layoutManager = LinearLayoutManager(this)
@@ -98,7 +103,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun setupSpinner() {
-        // access the spinner
+        // setup spinner for city change
         val spinner = findViewById<Spinner>(R.id.spinner)
         if (spinner != null) {
             val adapter = ArrayAdapter(
@@ -112,7 +117,9 @@ class SearchActivity : AppCompatActivity() {
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>,
-                    view: View, position: Int, id: Long
+                    view: View,
+                    position: Int,
+                    id: Long
                 ) {
                     addressList.clear()
                     searchRecyclerAdapter!!.notifyDataSetChanged()

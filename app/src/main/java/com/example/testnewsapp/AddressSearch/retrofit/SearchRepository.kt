@@ -11,7 +11,7 @@ class SearchRepository {
     val searchData = MutableLiveData<SearchResponse?>()
 
     fun getAddressResult(query: String?, city: String?): MutableLiveData<SearchResponse?> {
-        searchApi.getSearchAddress(query, city)!!.enqueue(object : Callback<SearchResponse?> {
+        searchApi.getSearchAddress(query, city).enqueue(object : Callback<SearchResponse?> {
             override fun onResponse(
                 call: Call<SearchResponse?>,
                 response: Response<SearchResponse?>

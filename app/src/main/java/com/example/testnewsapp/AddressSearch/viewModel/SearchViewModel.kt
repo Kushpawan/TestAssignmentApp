@@ -9,14 +9,14 @@ import com.example.testnewsapp.AddressSearch.retrofit.SearchRepository
 class SearchViewModel : ViewModel() {
 
     lateinit var searchLiveData: MutableLiveData<SearchResponse?>
-    var searchRepository: SearchRepository? = null
+    lateinit var searchRepository: SearchRepository
 
     fun init() {
-        searchRepository = SearchRepository.instance
+        searchRepository = SearchRepository.instance!!
     }
 
     fun getSearchRepository(query: String?, city: String): LiveData<SearchResponse?>? {
-        searchLiveData = searchRepository!!.getAddressResult(query, city)
+        searchLiveData = searchRepository.getAddressResult(query, city)
         return searchLiveData
     }
 }

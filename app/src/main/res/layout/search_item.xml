@@ -21,7 +21,7 @@
             android:gravity="center|start"
             android:lines="1"
             android:padding="12dp"
-            android:textSize="17sp"
+            android:textSize="15sp"
             android:textStyle="normal"
             tools:text="25th main road" />
 
