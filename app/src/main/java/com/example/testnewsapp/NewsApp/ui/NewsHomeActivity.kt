@@ -1,4 +1,4 @@
-package com.example.testnewsapp.NewsApp
+package com.example.testnewsapp.NewsApp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,10 +10,10 @@ import com.example.testnewsapp.NewsApp.adapters.NewsAdapter
 import com.example.testnewsapp.NewsApp.model.NewsArticle
 import com.example.testnewsapp.NewsApp.viewmodels.NewsViewModel
 import com.example.testnewsapp.R
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_news_home.*
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class NewsHomeActivity : AppCompatActivity() {
 
     private var articleArrayList = ArrayList<NewsArticle>()
     private var newsAdapter: NewsAdapter? = null
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_news_home)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -37,7 +37,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         if (newsAdapter == null) {
-            newsAdapter = NewsAdapter(this@MainActivity, articleArrayList)
+            newsAdapter = NewsAdapter(this@NewsHomeActivity, articleArrayList) {
+                newsViewModel.setDetails(it)
+                openDetailActivity()
+            }
             rvNews.layoutManager = LinearLayoutManager(this)
             rvNews.adapter = newsAdapter
             rvNews.itemAnimator = DefaultItemAnimator()
@@ -45,6 +48,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             newsAdapter!!.notifyDataSetChanged()
         }
+    }
+
+    private fun openDetailActivity() {
+        startActivityForResult(NewsDetailActivity.getLaunchIntent(this), 10)
     }
 
     private fun observeViewModel() {

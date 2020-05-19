@@ -1,19 +1,29 @@
 package com.example.testnewsapp.NewsApp.model
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-class NewsResponse {
-    @SerializedName("status")
-    @Expose
-    var status: String? = null
-
-    @SerializedName("totalResults")
-    @Expose
-    var totalResults: Int? = null
-
-    @SerializedName("articles")
-    @Expose
+@Parcelize
+data class NewsResponse(
+    var status: String? = null,
+    var totalResults: Int? = null,
     var articles: List<NewsArticle>? = null
+) : Parcelable
 
-}
+@Parcelize
+data class NewsArticle(
+    var source: NewsSource? = null,
+    var author: String? = null,
+    var title: String? = null,
+    var description: String? = null,
+    var url: String? = null,
+    var urlToImage: String? = null,
+    var publishedAt: String? = null,
+    var content: String? = null
+) : Parcelable
+
+@Parcelize
+data class NewsSource(
+    var id: String? = null,
+    var name: String? = null
+) : Parcelable

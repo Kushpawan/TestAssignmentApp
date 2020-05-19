@@ -3,6 +3,7 @@ package com.example.testnewsapp.NewsApp.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.testnewsapp.NewsApp.model.NewsArticle
 import com.example.testnewsapp.NewsApp.model.NewsResponse
 import com.example.testnewsapp.NewsApp.retrofit.NewsRepository
 import com.example.testnewsapp.NewsApp.retrofit.NewsRepository.Companion.instance
@@ -10,6 +11,7 @@ import com.example.testnewsapp.NewsApp.retrofit.NewsRepository.Companion.instanc
 class NewsViewModel : ViewModel() {
 
     lateinit var mutableLiveData: MutableLiveData<NewsResponse?>
+    private val newsArticle = MutableLiveData<NewsArticle?>()
     var newsRepository: NewsRepository? = null
 
     fun init() {
@@ -19,5 +21,13 @@ class NewsViewModel : ViewModel() {
 
     fun getNewsRepository(): LiveData<NewsResponse?>? {
         return mutableLiveData
+    }
+
+    fun setDetails(details: NewsArticle) {
+        newsArticle.value = details
+    }
+
+    fun getDetails(): LiveData<NewsArticle?> {
+       return newsArticle
     }
 }
