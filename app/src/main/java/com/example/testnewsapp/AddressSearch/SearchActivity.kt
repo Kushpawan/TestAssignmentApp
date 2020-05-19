@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
@@ -22,6 +25,9 @@ class SearchActivity : AppCompatActivity() {
     private var searchRecyclerAdapter: SearchRecyclerAdapter? = null
     lateinit var searchViewModel: SearchViewModel
     private var addressList = ArrayList<AddressDetail>()
+    var cities = arrayOf("Bangalore", "Gurgaon", "Delhi", "Lucknow", "Mumbai", "Pune")
+    var selectedCity: String = "Bangalore"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +35,13 @@ class SearchActivity : AppCompatActivity() {
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.title="Address Search"
+        supportActionBar?.title = "Address Search"
 
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
         searchViewModel.init()
 
         setupRecyclerView()
+        setupSpinner()
 
         search_EditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
@@ -79,15 +86,43 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel(query: String) {
-        searchViewModel.getSearchRepository(query)
+        searchViewModel.getSearchRepository(query, selectedCity)
             ?.observe(this, androidx.lifecycle.Observer {
                 it?.let {
-                    val newsArticles = it.data.addressList!!
                     addressList.clear()
-                    addressList.addAll(newsArticles)
+                    addressList.addAll(it.data.addressList!!)
                     searchRecyclerAdapter!!.notifyDataSetChanged()
+                    searchProgress.visibility = View.GONE
                 }
             })
+    }
+
+    private fun setupSpinner() {
+        // access the spinner
+        val spinner = findViewById<Spinner>(R.id.spinner)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item, cities
+            )
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View, position: Int, id: Long
+                ) {
+                    addressList.clear()
+                    searchRecyclerAdapter!!.notifyDataSetChanged()
+                    selectedCity = cities[position]
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                }
+            }
+        }
     }
 
 }

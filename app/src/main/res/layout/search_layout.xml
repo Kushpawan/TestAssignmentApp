@@ -24,6 +24,8 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="12dp"
+        android:drawablePadding="8dp"
+        android:drawableStart="@android:drawable/ic_menu_search"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 

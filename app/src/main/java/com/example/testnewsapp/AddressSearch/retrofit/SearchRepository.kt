@@ -7,7 +7,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SearchRepository {
-    private val searchApi: SearchApi = com.example.testnewsapp.AddressSearch.retrofit.RetrofitService.createService(SearchApi::class.java)
+    private val searchApi: SearchApi = RetrofitService.createService(SearchApi::class.java)
     val searchData = MutableLiveData<SearchResponse?>()
 
     fun getAddressResult(query: String?, city: String?): MutableLiveData<SearchResponse?> {

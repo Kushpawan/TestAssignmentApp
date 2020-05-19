@@ -15,8 +15,8 @@ class SearchViewModel : ViewModel() {
         searchRepository = SearchRepository.instance
     }
 
-    fun getSearchRepository(query:String?): LiveData<SearchResponse?>? {
-        searchLiveData = searchRepository!!.getAddressResult(query, "bangalore")
+    fun getSearchRepository(query: String?, city: String): LiveData<SearchResponse?>? {
+        searchLiveData = searchRepository!!.getAddressResult(query, city)
         return searchLiveData
     }
 }
