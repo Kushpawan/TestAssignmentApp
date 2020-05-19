@@ -2,7 +2,6 @@ package com.example.testnewsapp.NewsApp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +10,7 @@ import com.example.testnewsapp.NewsApp.model.NewsArticle
 import com.example.testnewsapp.NewsApp.viewmodels.NewsViewModel
 import com.example.testnewsapp.R
 import kotlinx.android.synthetic.main.activity_news_home.*
+import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
 class NewsHomeActivity : AppCompatActivity() {
@@ -23,9 +23,7 @@ class NewsHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_home)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = "News App"
+        toolbar_title.text = "News App"
 
         newsViewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
         newsViewModel.init()
@@ -38,8 +36,7 @@ class NewsHomeActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         if (newsAdapter == null) {
             newsAdapter = NewsAdapter(this@NewsHomeActivity, articleArrayList) {
-                newsViewModel.setDetails(it)
-                openDetailActivity()
+                openDetailActivity(it)
             }
             rvNews.layoutManager = LinearLayoutManager(this)
             rvNews.adapter = newsAdapter
@@ -50,8 +47,8 @@ class NewsHomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun openDetailActivity() {
-        startActivityForResult(NewsDetailActivity.getLaunchIntent(this), 10)
+    private fun openDetailActivity(detail: NewsArticle) {
+        startActivityForResult(NewsDetailActivity.getLaunchIntent(this, detail), 10)
     }
 
     private fun observeViewModel() {

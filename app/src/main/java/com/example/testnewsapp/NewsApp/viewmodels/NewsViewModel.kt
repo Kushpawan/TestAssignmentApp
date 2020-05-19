@@ -11,12 +11,12 @@ import com.example.testnewsapp.NewsApp.retrofit.NewsRepository.Companion.instanc
 class NewsViewModel : ViewModel() {
 
     lateinit var mutableLiveData: MutableLiveData<NewsResponse?>
-    private val newsArticle = MutableLiveData<NewsArticle?>()
+    var newsArticle = MutableLiveData<NewsArticle?>()
     var newsRepository: NewsRepository? = null
 
     fun init() {
         newsRepository = instance
-        mutableLiveData = newsRepository!!.getNews("in", "a0a21a67f3b24f4696d67341ab342d54")
+        mutableLiveData = newsRepository!!.getNews("us", "a0a21a67f3b24f4696d67341ab342d54")
     }
 
     fun getNewsRepository(): LiveData<NewsResponse?>? {
@@ -27,7 +27,7 @@ class NewsViewModel : ViewModel() {
         newsArticle.value = details
     }
 
-    fun getDetails(): LiveData<NewsArticle?> {
+    fun getDetails(): MutableLiveData<NewsArticle?> {
        return newsArticle
     }
 }
