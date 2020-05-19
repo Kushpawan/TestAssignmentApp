@@ -11,7 +11,6 @@ import com.example.testnewsapp.NewsApp.retrofit.NewsRepository.Companion.instanc
 class NewsViewModel : ViewModel() {
 
     lateinit var mutableLiveData: MutableLiveData<NewsResponse?>
-    var newsArticle = MutableLiveData<NewsArticle?>()
     var newsRepository: NewsRepository? = null
 
     fun init() {
@@ -23,11 +22,4 @@ class NewsViewModel : ViewModel() {
         return mutableLiveData
     }
 
-    fun setDetails(details: NewsArticle) {
-        newsArticle.value = details
-    }
-
-    fun getDetails(): MutableLiveData<NewsArticle?> {
-       return newsArticle
-    }
 }

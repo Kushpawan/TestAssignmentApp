@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import coil.api.load
 import com.example.testnewsapp.NewsApp.model.NewsArticle
 import com.example.testnewsapp.R
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_news_detail.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -30,7 +30,7 @@ class NewsDetailActivity : AppCompatActivity() {
         tv_content.text = details.content
 
 
-        Picasso.get().load(details.urlToImage).into(iv_news)
+        iv_news.load(details.urlToImage)
     }
 
     companion object {
