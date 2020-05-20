@@ -17,6 +17,7 @@ import com.example.testnewsapp.AddressSearch.viewModel.SearchViewModel
 import com.example.testnewsapp.R
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.search_layout.*
+import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
 
@@ -35,9 +36,7 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = "Address Search"
+        toolbar_title.text = "Address Search"
 
         //initialise viewModel
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)

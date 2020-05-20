@@ -10,11 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".NewsApp.MainActivity"
-            android:screenOrientation="fullSensor"></activity>
-        <activity android:name=".AddressSearch.SearchActivity"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".NewsApp.ui.NewsDetailActivity"></activity>
+        <activity android:name=".AddressSearch.SearchActivity" />
+        <activity
+            android:name=".NewsApp.ui.NewsHomeActivity"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
