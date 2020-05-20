@@ -1,10 +1,10 @@
-package com.example.testnewsapp.AddressSearch.viewModel
+package com.example.testassignment.AddressSearch.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.testnewsapp.AddressSearch.models.SearchResponse
-import com.example.testnewsapp.AddressSearch.retrofit.SearchRepository
+import com.example.testassignment.AddressSearch.models.SearchResponse
+import com.example.testassignment.AddressSearch.retrofit.SearchRepository
 
 class SearchViewModel : ViewModel() {
 

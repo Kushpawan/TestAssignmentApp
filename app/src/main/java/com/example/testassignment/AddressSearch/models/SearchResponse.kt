@@ -1,4 +1,4 @@
-package com.example.testnewsapp.AddressSearch.models
+package com.example.testassignment.AddressSearch.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

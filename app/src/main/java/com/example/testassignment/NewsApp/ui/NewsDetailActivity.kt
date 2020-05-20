@@ -1,12 +1,12 @@
-package com.example.testnewsapp.NewsApp.ui
+package com.example.testassignment.NewsApp.ui
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import coil.api.load
-import com.example.testnewsapp.NewsApp.model.NewsArticle
-import com.example.testnewsapp.R
+import com.example.testassignment.NewsApp.model.NewsArticle
+import com.example.testassignment.R
 import kotlinx.android.synthetic.main.activity_news_detail.*
 import kotlinx.android.synthetic.main.toolbar.*
 

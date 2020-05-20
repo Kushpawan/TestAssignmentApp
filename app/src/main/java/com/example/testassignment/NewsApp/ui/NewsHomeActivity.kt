@@ -1,13 +1,13 @@
-package com.example.testnewsapp.NewsApp.ui
+package com.example.testassignment.NewsApp.ui
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.testnewsapp.NewsApp.adapters.NewsAdapter
-import com.example.testnewsapp.NewsApp.model.NewsArticle
-import com.example.testnewsapp.NewsApp.viewmodels.NewsViewModel
-import com.example.testnewsapp.R
+import com.example.testassignment.NewsApp.adapters.NewsAdapter
+import com.example.testassignment.NewsApp.model.NewsArticle
+import com.example.testassignment.NewsApp.viewmodels.NewsViewModel
+import com.example.testassignment.R
 import kotlinx.android.synthetic.main.activity_news_home.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
@@ -35,9 +35,13 @@ class NewsHomeActivity : BaseActivity() {
 
     private fun setupRecyclerView() {
         if (newsAdapter == null) {
-            newsAdapter = NewsAdapter(this@NewsHomeActivity, articleArrayList) {
-                openDetailActivity(it)
-            }
+            newsAdapter =
+                NewsAdapter(
+                    this@NewsHomeActivity,
+                    articleArrayList
+                ) {
+                    openDetailActivity(it)
+                }
             rvNews.layoutManager = LinearLayoutManager(this)
             rvNews.adapter = newsAdapter
             rvNews.itemAnimator = DefaultItemAnimator()
@@ -48,7 +52,11 @@ class NewsHomeActivity : BaseActivity() {
     }
 
     private fun openDetailActivity(detail: NewsArticle) {
-        startActivityForResult(NewsDetailActivity.getLaunchIntent(this, detail), 10)
+        startActivityForResult(
+            NewsDetailActivity.getLaunchIntent(
+                this,
+                detail
+            ), 10)
     }
 
     private fun observeViewModel() {

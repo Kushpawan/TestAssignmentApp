@@ -1,9 +1,9 @@
-package com.example.testnewsapp.NewsApp.ui
+package com.example.testassignment.NewsApp.ui
 
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.testnewsapp.NewsApp.model.NewsArticle
+import com.example.testassignment.NewsApp.model.NewsArticle
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

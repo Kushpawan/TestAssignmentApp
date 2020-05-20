@@ -1,13 +1,16 @@
-package com.example.testnewsapp.AddressSearch.retrofit
+package com.example.testassignment.AddressSearch.retrofit
 
 import androidx.lifecycle.MutableLiveData
-import com.example.testnewsapp.AddressSearch.models.SearchResponse
+import com.example.testassignment.AddressSearch.models.SearchResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SearchRepository {
-    private val searchApi: SearchApi = RetrofitService.createService(SearchApi::class.java)
+    private val searchApi: SearchApi =
+        RetrofitService.createService(
+            SearchApi::class.java
+        )
     val searchData = MutableLiveData<SearchResponse?>()
 
     fun getAddressResult(query: String?, city: String?): MutableLiveData<SearchResponse?> {
@@ -37,7 +40,8 @@ class SearchRepository {
         @JvmStatic
         val instance: SearchRepository?
             get() {
-                searchRepository = SearchRepository()
+                searchRepository =
+                    SearchRepository()
                 return searchRepository
             }
     }
