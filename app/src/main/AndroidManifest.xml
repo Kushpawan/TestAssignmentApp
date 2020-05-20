@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.testassignment.NewsApp.ui.NewsDetailActivity"></activity>
-        <activity android:name="com.example.testassignment.AddressSearch.SearchActivity" />
+        <activity android:name=".NewsApp.ui.NewsDetailActivity"></activity>
+        <activity android:name=".NewsApp.ui.NewsHomeActivity" />
         <activity
-            android:name="com.example.testassignment.NewsApp.ui.NewsHomeActivity"
+            android:name=".AddressSearch.SearchActivity"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
