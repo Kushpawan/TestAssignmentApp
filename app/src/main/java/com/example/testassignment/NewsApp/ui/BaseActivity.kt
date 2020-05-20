@@ -3,6 +3,7 @@ package com.example.testassignment.NewsApp.ui
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.testassignment.NewsApp.model.AppDatabase
 import com.example.testassignment.NewsApp.model.NewsArticle
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

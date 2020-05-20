@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+final roomSchemaDir = "$projectDir/roomSchemas"
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -33,6 +35,13 @@ android {
 
 }
 
+kapt {
+    mapDiagnosticLocations = true
+    arguments {
+        arg("room.schemaLocation", roomSchemaDir)
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -55,6 +64,10 @@ dependencies {
 
     // Coil
     implementation "io.coil-kt:coil:$coilVersion"
+
+    // Room database
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     //Dagger Android
     implementation "com.google.dagger:dagger-android:$daggerVersion"

@@ -5,11 +5,14 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testassignment.NewsApp.adapters.NewsAdapter
+import com.example.testassignment.NewsApp.model.AppDatabase
 import com.example.testassignment.NewsApp.model.NewsArticle
 import com.example.testassignment.NewsApp.viewmodels.NewsViewModel
 import com.example.testassignment.R
 import kotlinx.android.synthetic.main.activity_news_home.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
 
 class NewsHomeActivity : BaseActivity() {
@@ -17,20 +20,20 @@ class NewsHomeActivity : BaseActivity() {
     private var articleArrayList = ArrayList<NewsArticle>()
     private var newsAdapter: NewsAdapter? = null
     private lateinit var newsViewModel: NewsViewModel
+    private lateinit var db: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_home)
+        db = AppDatabase(this)
 
         toolbar_title.text = "News App"
 
         newsViewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
         newsViewModel.init()
 
-
-        observeViewModel()
-
         setupRecyclerView()
+        observeViewModel()
     }
 
     private fun setupRecyclerView() {
@@ -56,20 +59,36 @@ class NewsHomeActivity : BaseActivity() {
             NewsDetailActivity.getLaunchIntent(
                 this,
                 detail
-            ), 10)
+            ), 10
+        )
     }
 
     private fun observeViewModel() {
         newsViewModel.getNewsRepository()?.observe(this, androidx.lifecycle.Observer {
             it?.let {
-                val newsArticles = it.articles!!
-                saveNews(newsArticles)
-                articleArrayList.addAll(newsArticles)
+                val articles = it.articles!!
+                // saveNews(newsArticles)
+                save(articles)
+                articleArrayList.addAll(articles)
+                newsAdapter!!.notifyDataSetChanged()
             } ?: run {
-                articleArrayList.addAll(getNewsFromDb())
+                updateFromBd()
             }
-            newsAdapter!!.notifyDataSetChanged()
         })
     }
 
+    private fun save(newsArticles: List<NewsArticle>) {
+        GlobalScope.launch {
+            db.todoDao().clearAndCacheArticles(newsArticles)
+        }
+    }
+
+    private fun updateFromBd() {
+       db.todoDao().getNewsArticles().observe(this, androidx.lifecycle.Observer {
+            it.let { it1 ->
+                articleArrayList.addAll(it1)
+                newsAdapter!!.notifyDataSetChanged()
+            }
+        })
+    }
 }
