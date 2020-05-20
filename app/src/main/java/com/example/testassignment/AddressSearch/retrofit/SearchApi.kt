@@ -1,6 +1,6 @@
-package com.example.testnewsapp.AddressSearch.retrofit
+package com.example.testassignment.AddressSearch.retrofit
 
-import com.example.testnewsapp.AddressSearch.models.SearchResponse
+import com.example.testassignment.AddressSearch.models.SearchResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,4 +1,4 @@
-package com.example.testnewsapp.AddressSearch
+package com.example.testassignment.AddressSearch
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.testnewsapp.AddressSearch.models.AddressDetail
-import com.example.testnewsapp.R
+import com.example.testassignment.AddressSearch.models.AddressDetail
+import com.example.testassignment.R
 import java.util.*
 
 class SearchRecyclerAdapter(

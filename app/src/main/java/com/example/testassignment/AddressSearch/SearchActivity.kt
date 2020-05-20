@@ -1,4 +1,4 @@
-package com.example.testnewsapp.AddressSearch
+package com.example.testassignment.AddressSearch
 
 import android.os.Bundle
 import android.text.Editable
@@ -12,9 +12,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.testnewsapp.AddressSearch.models.AddressDetail
-import com.example.testnewsapp.AddressSearch.viewModel.SearchViewModel
-import com.example.testnewsapp.R
+import com.example.testassignment.AddressSearch.models.AddressDetail
+import com.example.testassignment.AddressSearch.viewModel.SearchViewModel
+import com.example.testassignment.R
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.search_layout.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -79,7 +79,11 @@ class SearchActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         // recycler view to show search result
         if (searchRecyclerAdapter == null) {
-            searchRecyclerAdapter = SearchRecyclerAdapter(this, addressList)
+            searchRecyclerAdapter =
+                SearchRecyclerAdapter(
+                    this,
+                    addressList
+                )
             search_recycler.layoutManager = LinearLayoutManager(this)
             search_recycler.adapter = searchRecyclerAdapter
             search_recycler.itemAnimator = DefaultItemAnimator()

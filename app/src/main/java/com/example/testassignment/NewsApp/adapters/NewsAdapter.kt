@@ -1,4 +1,4 @@
-package com.example.testnewsapp.NewsApp.adapters
+package com.example.testassignment.NewsApp.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,9 +10,9 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import coil.api.load
-import com.example.testnewsapp.NewsApp.adapters.NewsAdapter.NewsViewHolder
-import com.example.testnewsapp.NewsApp.model.NewsArticle
-import com.example.testnewsapp.R
+import com.example.testassignment.NewsApp.adapters.NewsAdapter.NewsViewHolder
+import com.example.testassignment.NewsApp.model.NewsArticle
+import com.example.testassignment.R
 import java.util.*
 
 class NewsAdapter(

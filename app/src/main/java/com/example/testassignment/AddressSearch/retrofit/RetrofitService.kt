@@ -1,4 +1,4 @@
-package com.example.testnewsapp.AddressSearch.retrofit
+package com.example.testassignment.AddressSearch.retrofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

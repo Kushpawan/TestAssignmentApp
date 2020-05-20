@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.testnewsapp">
+    package="com.example.testassignment">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NewsApp.ui.NewsDetailActivity"></activity>
-        <activity android:name=".AddressSearch.SearchActivity" />
+        <activity android:name="com.example.testassignment.NewsApp.ui.NewsDetailActivity"></activity>
+        <activity android:name="com.example.testassignment.AddressSearch.SearchActivity" />
         <activity
-            android:name=".NewsApp.ui.NewsHomeActivity"
+            android:name="com.example.testassignment.NewsApp.ui.NewsHomeActivity"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
